@@ -1,0 +1,20 @@
+:host {
+
+  height: 500px;
+  background-color: red;
+}
+
+mat-sidenav {
+
+  width: 250px;
+}
+
+mat-sidenav-container, mat-sidenav-content {
+
+  height: 100%;
+}
+
+.nav_caption {
+
+  padding-left: 10px;
+}

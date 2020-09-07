@@ -1,0 +1,29 @@
+<mat-progress-bar *ngIf="isLoading$ | async" mode="indeterminate"></mat-progress-bar>
+<section>
+  <form fxLayout="column" fxLayoutAlign="center center" class="pt-3" fxLayoutGap="10px" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input
+        matInput
+        type="email"
+        placeholder="Your Email"
+        autocomplete="off"
+        formControlName="email"
+      >
+      <!-- error -->
+      <mat-error *ngIf="f.email.hasError('required')">Email is required</mat-error>
+      <mat-error *ngIf="f.email.hasError('email') && !f.email.hasError('required')">Email is invalid</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+      >
+      <mat-hint align="end" class="btn-link text-primary" [ngStyle]="{cursor: 'pointer'}">Forgoten password?</mat-hint>
+      <!-- error -->
+      <mat-error *ngIf="f.password.hasError('required')">Password is required</mat-error>
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary" [disabled]="this.loginForm.invalid">Login</button>
+  </form>
+</section>

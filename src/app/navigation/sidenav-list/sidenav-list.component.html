@@ -1,0 +1,27 @@
+<div class="welcome_text">Welcome</div>
+<mat-list>
+  <mat-nav-list>
+    <a mat-list-item routerLink="/training" (click)="onSidenavClose()" *ngIf="!(isAuth$ | async)">
+      <mat-icon>model_training</mat-icon>
+      <mat-label class="nav_caption">Training</mat-label>
+    </a>
+  </mat-nav-list>
+  <mat-nav-list>
+    <a mat-list-item routerLink="/login" (click)="onSidenavClose()" *ngIf="!(isAuth$ | async)">
+      <mat-icon>login</mat-icon>
+      <mat-label class="nav_caption">Login</mat-label>
+    </a>
+  </mat-nav-list>
+  <mat-nav-list>
+    <a mat-list-item routerLink="/signup" (click)="onSidenavClose()" *ngIf="isAuth$ | async">
+      <mat-icon>account_circle</mat-icon>
+      <mat-label class="nav_caption">Signup</mat-label>
+    </a>
+  </mat-nav-list>
+  <mat-nav-list>
+    <a mat-list-item (click)="onLogout()" *ngIf="isAuth$ | async">
+      <mat-icon>input</mat-icon>
+      <mat-label class="nav_caption">Logout</mat-label>
+    </a>
+  </mat-nav-list>
+</mat-list>

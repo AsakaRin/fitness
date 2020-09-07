@@ -1,0 +1,54 @@
+<mat-progress-bar *ngIf="isLoading$" mode="indeterminate"></mat-progress-bar>
+<section class="signup-form">
+  <form fxLayout="column" fxLayoutAlign="center center" class="pt-3" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <mat-form-field>
+      <input
+        matInput
+        type="email"
+        placeholder="Your Email"
+        ngModel
+        name="email"
+        email
+        required
+        #eInput="ngModel"
+        autocomplete="off"
+      >
+      <!-- error -->
+      <mat-error *ngIf="eInput.hasError('required')">E-mail is required.</mat-error>
+      <mat-error *ngIf="eInput.hasError('email') && !eInput.hasError('required')">E-mail is invalid.</mat-error>
+    </mat-form-field>
+    <mat-form-field hintLabel="Should be at least 6 character long.">
+      <input
+        matInput
+        type="password"
+        placeholder="Password"
+        ngModel
+        name="password"
+        required
+        minlength="6"
+        #pwInput="ngModel"
+      >
+      <!-- hint -->
+      <mat-hint align="end">{{pwInput.value?.length}}/6</mat-hint>
+      <!-- error -->
+      <mat-error>Should be at least 6 character long.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Your birthday</mat-label>
+      <input
+        matInput
+        [matDatepicker]="datePicker"
+        [max]="maxDate"
+        ngModel
+        name="birthday"
+        required
+      >
+      <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+      <mat-datepicker #datePicker color="primary"></mat-datepicker>
+      <!-- error -->
+      <mat-error>Birthday is required</mat-error>
+    </mat-form-field>
+    <mat-checkbox ngModel name="agree" required>Agree to Terms and Conditions</mat-checkbox>
+    <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Sign Up</button>
+  </form>
+</section>

@@ -1,0 +1,22 @@
+<section fxLayout fxLayoutAlign="center">
+  <form [formGroup]="exerciseForm" (ngSubmit)="onStart()">
+    <mat-card class="training" fxFlex="400px" fxFlex.xs="100%" fxLayout="column" fxLayoutAlign="center center">
+      <mat-card-title>Time to start a workout!</mat-card-title>
+      <mat-card-content>
+
+          <mat-form-field>
+            <mat-select placeholder="Select type of training" formControlName="exerciseId">
+              <mat-option *ngFor="let exercise of exercises" [value]="exercise.id">
+                {{exercise.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="f.exerciseId.hasError('required')">You must select at least one to practice</mat-error>
+          </mat-form-field>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button type="submit" [disabled]="exerciseForm.invalid">Start</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</section>

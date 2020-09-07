@@ -1,0 +1,24 @@
+.navigation-items {
+
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  a {
+
+    font-size: 80%;
+  }
+}
+
+a {
+
+  color: white;
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+
+  cursor: pointer;
+  color: lightgray;
+}
